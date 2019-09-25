@@ -6,7 +6,7 @@
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "lib",
     "noUnusedLocals": true,
@@ -17,7 +17,7 @@
     "rootDir": ".",
     "jsx": "preserve",
     "jsxFactory": "Taro.createElement",
-    "allowJs": true,
+    "allowJs": false,
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
