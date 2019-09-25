@@ -24,9 +24,12 @@ class App extends Component {
     config: Config = {
         pages: [
             'pages/index/index',
-            'pages/test/test',
             'pages/car/car',
-            'pages/user/user'
+            'pages/user/user',
+            'pages/type/type',
+
+            'pages/test/test',
+
         ],
         window: {
             backgroundTextStyle: 'light',
@@ -41,10 +44,10 @@ class App extends Component {
                 selectedIconPath: "images/tabBar/tarbar2-1.png",
                 text: "首页"
             }, {
-                pagePath: "pages/test/test",
+                pagePath: "pages/type/type",
                 iconPath: "images/tabBar/tarbar1-2.png",
                 selectedIconPath: "images/tabBar/tarbar2-2.png",
-                text: "麦扣"
+                text: "分类"
             }, {
                 pagePath: "pages/car/car",
                 iconPath: "images/tabBar/tarbar1-3.png",

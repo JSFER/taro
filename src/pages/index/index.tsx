@@ -91,7 +91,7 @@ class Index extends Component {
 
     goTest = () =>{
         const { name } = this.state
-        Taro.navigateTo({
+        Taro.redirectTo({
             url: `/pages/test/test?name=${name}&age=30`
         })
     }
