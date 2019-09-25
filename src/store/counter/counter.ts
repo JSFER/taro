@@ -15,13 +15,7 @@ export default class Counter {
     @action.bound incrementAsync() {
         getResultData_servers({email: 'admin@bioon.com', password: 'admin123456'}).then((res: any) => {
             console.log(res)
+            this.counter++
         })
-        // request.get('/abc').then((res:any) => {
-        //     console.log(res)
-        //     console.log(111)
-        // })
-        // setTimeout(() => {
-        //     this.counter++
-        // }, 1000)
     }
 }
