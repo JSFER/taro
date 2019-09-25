@@ -12,8 +12,8 @@ export default class Counter {
     @action.bound decrement() {
         this.counter--
     }
-    @action.bound incrementAsync() {
-        getResultData_servers({email: 'admin@bioon.com', password: 'admin123456'}).then((res: any) => {
+    @action.bound incrementAsync(params: {email: string, password:string }) {
+        getResultData_servers(params).then((res: any) => {
             console.log(res)
             this.counter++
         })

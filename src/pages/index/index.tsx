@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Button } from '@tarojs/components'
+import { View, Text, Button, Input } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
@@ -17,7 +17,9 @@ type propsType = {
     }
 }
 type stateType = {
-    name: string
+    name: string,
+    email: string,
+    password: string
 }
 
 interface Index {
@@ -40,7 +42,9 @@ class Index extends Component {
     }
     
     state: stateType = {
-        name: '朱传良'
+        name: '朱传良',
+        email: '',
+        password: ''
     }
 
     componentWillMount() { }
@@ -57,7 +61,8 @@ class Index extends Component {
 
     incrementAsync = () => {
         const { counter } = this.props
-        counter.incrementAsync()
+        const { email, password } = this.state
+        counter.incrementAsync({email, password})
     }
     setPrice() {
         const { price: { setPrice } } = this.props
@@ -73,6 +78,17 @@ class Index extends Component {
 
     componentDidHide() { }
 
+    change(e: any) {
+        this.setState({
+            email: e.detail.value
+        })
+    }
+    change2(e: any) {
+        this.setState({
+            password: e.detail.value
+        })
+    }
+
     goTest = () =>{
         const { name } = this.state
         Taro.navigateTo({
@@ -86,13 +102,19 @@ class Index extends Component {
             <View className='index'>
                 <Button onClick={this.increment}>+</Button>
                 <Button onClick={this.decrement}>-</Button>
-                <Button onClick={this.incrementAsync}>Add Async</Button>
                 <Text>{counter}</Text>
-                <Button onClick={this.setPrice}>点击</Button>
-                <Text>现在价格为：{price}</Text>
+
+                <View style={{marginTop: '50px'}}>
+                    账号：<Input className="email" onInput={ e => this.change(e)} ></Input>
+                    密码：<Input className="password" onInput={ e => this.change2(e)}></Input>
+                </View>
+                <Button onClick={this.incrementAsync}>登入</Button>
+                
+                <Button style={{marginTop: '50px'}} onClick={this.setPrice}>点击</Button>
+                <View>现在价格为：{price}</View>
                 <View>
                     <Text>Hello world!</Text>
-                    <Button type="primary" onClick={this.goTest}>点击</Button>
+                    <Button type="primary" onClick={this.goTest}>跳转</Button>
                 </View>
             </View>
         )

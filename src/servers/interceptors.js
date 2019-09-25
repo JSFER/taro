@@ -7,6 +7,7 @@ const customInterceptor = (chain) => {
     const requestParams = chain.requestParams
 
     return chain.proceed(requestParams).then(res => {
+        console.log(res)
         // 只要请求成功，不管返回什么状态码，都走这个回调
         if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
             return Promise.reject("请求资源不存在")
