@@ -1,10 +1,12 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Video, Image } from '@tarojs/components'
 import './test.scss'
 
 export interface State{
     name: string,
-    age: string
+    age: string,
+    src: string,
+    imgSrc: string
 }
 
 export default class Test extends Component {
@@ -23,7 +25,9 @@ export default class Test extends Component {
 
     state: State = {
         name: '',
-        age: ''
+        age: '',
+        src: 'https://7n-yika.medsci.cn/tmp_b10f8aa69465508c25b7ceaa6d3c5333.mp4',
+        imgSrc: 'https://7n-yika.medsci.cn/tmp_d7b4da885f7cafaae6113a0c9ffb05f1.jpg'
     }
 
     componentWillMount() { 
@@ -33,6 +37,20 @@ export default class Test extends Component {
             name,
             age
         })
+        Taro.showToast({
+            title: '你好',
+            icon: 'none',
+            duration: 1000
+        })
+    }
+
+    showImage = () => {
+        const { imgSrc } = this.state
+        console.log(imgSrc)
+        Taro.previewImage({
+            current: imgSrc,
+            urls: [imgSrc]   // 需要预览的图片 http 链接列表   
+        });
     }
 
     componentDidMount() { }
@@ -44,11 +62,15 @@ export default class Test extends Component {
     componentDidHide() { }
 
     render() {
-        const { name, age } = this.state
+        const { name, age, src, imgSrc } = this.state
         return (
             <View className='test'>
                 <View>姓名：{name}</View>
                 <View>年龄：{age}</View>
+                <View>
+                    <Image onClick={this.showImage} className="image" src={imgSrc}></Image>
+                </View>
+                <Video controls={true} src={src} poster={src + '?vframe/jpg/offset/1'}></Video>
             </View>
         )
     }
