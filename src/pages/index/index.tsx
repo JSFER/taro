@@ -17,7 +17,7 @@ type propsType = {
     }
 }
 type stateType = {
-    
+    name: string
 }
 
 interface Index {
@@ -28,13 +28,6 @@ interface Index {
 @inject('price', 'counter')
 @observer
 class Index extends Component {
-    constructor(props) {
-        super(props)
-            this.state = {
-
-            }
-    }  
-
     /**
      * 指定config的类型声明为: Taro.Config
      *
@@ -44,6 +37,10 @@ class Index extends Component {
      */
     config: Config = {
         navigationBarTitleText: '首页'
+    }
+    
+    state: stateType = {
+        name: '朱传良'
     }
 
     componentWillMount() { }
@@ -77,8 +74,9 @@ class Index extends Component {
     componentDidHide() { }
 
     goTest = () =>{
+        const { name } = this.state
         Taro.navigateTo({
-            url: `/pages/test/test?name=麦扣&age=30`
+            url: `/pages/test/test?name=${name}&age=30`
         })
     }
     
