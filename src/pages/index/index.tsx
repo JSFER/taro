@@ -1,8 +1,39 @@
+import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Button } from '@tarojs/components'
+import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
-export default class Index extends Component {
+type propsType = {
+    price: {
+        price: number,
+        setPrice: Function
+    },
+    counter: {
+        counter: number,
+        increment: Function,
+        decrement: Function,
+        incrementAsync: Function
+    }
+}
+type stateType = {
+    
+}
+
+interface Index {
+    props: propsType,
+    state: stateType
+}
+
+@inject('price', 'counter')
+@observer
+class Index extends Component {
+    constructor(props) {
+        super(props)
+            this.state = {
+
+            }
+    }  
 
     /**
      * 指定config的类型声明为: Taro.Config
@@ -17,6 +48,26 @@ export default class Index extends Component {
 
     componentWillMount() { }
 
+    increment = () => {
+        const { counter } = this.props
+        counter.increment()
+    }
+
+    decrement = () => {
+        const { counter } = this.props
+        counter.decrement()
+    }
+
+    incrementAsync = () => {
+        const { counter } = this.props
+        counter.incrementAsync()
+    }
+    setPrice() {
+        const { price: { setPrice } } = this.props
+        setPrice(1)
+    }
+
+
     componentDidMount() { }
 
     componentWillUnmount() { }
@@ -25,11 +76,29 @@ export default class Index extends Component {
 
     componentDidHide() { }
 
+    goTest = () =>{
+        Taro.navigateTo({
+            url: `/pages/test/test?name=麦扣&age=30`
+        })
+    }
+    
     render() {
+        const { counter: { counter }, price: { price } } = this.props
         return (
             <View className='index'>
-                <Text>Hello world!</Text>
+                <Button onClick={this.increment}>+</Button>
+                <Button onClick={this.decrement}>-</Button>
+                <Button onClick={this.incrementAsync}>Add Async</Button>
+                <Text>{counter}</Text>
+                <Button onClick={this.setPrice}>点击</Button>
+                <Text>现在价格为：{price}</Text>
+                <View>
+                    <Text>Hello world!</Text>
+                    <Button type="primary" onClick={this.goTest}>点击</Button>
+                </View>
             </View>
         )
     }
 }
+
+export default Index as ComponentType
