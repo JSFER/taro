@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx'
+import { getResultData_servers } from '../../servers/servers'
 
 export default class Counter {
     @observable counter:number =  0
@@ -12,8 +13,15 @@ export default class Counter {
         this.counter--
     }
     @action.bound incrementAsync() {
-        setTimeout(() => {
-            this.counter++
-        }, 1000)
+        getResultData_servers({email: 'admin@bioon.com', password: 'admin123456'}).then((res: any) => {
+            console.log(res)
+        })
+        // request.get('/abc').then((res:any) => {
+        //     console.log(res)
+        //     console.log(111)
+        // })
+        // setTimeout(() => {
+        //     this.counter++
+        // }, 1000)
     }
 }

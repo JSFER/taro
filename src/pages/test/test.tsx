@@ -46,7 +46,6 @@ export default class Test extends Component {
 
     showImage = () => {
         const { imgSrc } = this.state
-        console.log(imgSrc)
         Taro.previewImage({
             current: imgSrc,
             urls: [imgSrc]   // 需要预览的图片 http 链接列表   
