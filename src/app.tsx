@@ -24,14 +24,44 @@ class App extends Component {
     config: Config = {
         pages: [
             'pages/index/index',
-            'pages/test/test'
+            'pages/test/test',
+            'pages/car/car',
+            'pages/user/user'
         ],
         window: {
             backgroundTextStyle: 'light',
             navigationBarBackgroundColor: '#fff',
             navigationBarTitleText: 'WeChat',
             navigationBarTextStyle: 'black'
+        },
+        tabBar: {
+            list: [{
+                pagePath: "pages/index/index",
+                iconPath: "images/tabBar/tarbar1-1.png",
+                selectedIconPath: "images/tabBar/tarbar2-1.png",
+                text: "首页"
+            }, {
+                pagePath: "pages/test/test",
+                iconPath: "images/tabBar/tarbar1-2.png",
+                selectedIconPath: "images/tabBar/tarbar2-2.png",
+                text: "麦扣"
+            }, {
+                pagePath: "pages/car/car",
+                iconPath: "images/tabBar/tarbar1-3.png",
+                selectedIconPath: "images/tabBar/tarbar2-3.png",
+                text: "购物车"
+            },{
+                pagePath: "pages/user/user",
+                iconPath: "images/tabBar/tarbar1-4.png",
+                selectedIconPath: "images/tabBar/tarbar2-4.png",
+                text: "我的"
+            }],
+            color: '#333',
+            selectedColor: '#333',
+            backgroundColor: '#fff',
+            borderStyle: 'black'
         }
+      
     }
 
     componentDidMount() { }
