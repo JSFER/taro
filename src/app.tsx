@@ -26,7 +26,7 @@ class App extends Component {
             'pages/index/index',
             'pages/car/car',
             'pages/user/user',
-            'pages/type/type',
+            'pages/types/types',
 
             'pages/test/test',
 
@@ -44,7 +44,7 @@ class App extends Component {
                 selectedIconPath: "images/tabBar/tarbar2-1.png",
                 text: "首页"
             }, {
-                pagePath: "pages/type/type",
+                pagePath: "pages/types/types",
                 iconPath: "images/tabBar/tarbar1-2.png",
                 selectedIconPath: "images/tabBar/tarbar2-2.png",
                 text: "分类"
