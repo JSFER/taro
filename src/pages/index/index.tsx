@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Button, Input } from '@tarojs/components'
+import { View, Text, Button, Input, Image, Swiper, SwiperItem } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
@@ -102,6 +102,21 @@ class Index extends Component {
 
         return (
             <View className='index'>
+                <Swiper
+                    className='test-h'
+                    indicatorColor='#999'
+                    indicatorActiveColor='#333'
+                    circular
+                    indicatorDots
+                    autoplay>
+                    <SwiperItem>
+                        <Image mode="widthFix" src="http://www.shqyps.com/images/about.jpg" className="slide-image"></Image>
+                    </SwiperItem>
+                    <SwiperItem>
+                        <Image mode="widthFix" src="http://www.shqyps.com/uploadpic/201907231720434swm.jpg" className="slide-image"></Image>
+                    </SwiperItem>
+                </Swiper>
+
                 <Button onClick={this.increment}>+</Button>
                 <Button onClick={this.decrement}>-</Button>
                 <Text style={{marginRight: '20px'}}>{counter}</Text>
