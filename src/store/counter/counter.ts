@@ -1,8 +1,13 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 import { getResultData_servers } from '../../servers/servers'
 
 export default class Counter {
     @observable counter:number =  0
+
+    @computed get allCount() {
+        return this.counter + 10;
+    }
+
     @action.bound counterStore() {
         this.counter++
     }
@@ -12,10 +17,9 @@ export default class Counter {
     @action.bound decrement() {
         this.counter--
     }
-    @action.bound incrementAsync(params: {email: string, password:string }) {
-        getResultData_servers(params).then((res: any) => {
-            console.log(res)
-            this.counter++
-        })
+    @action.bound async incrementAsync(params: {email: string, password:string }) {
+        const res:any = await getResultData_servers(params)
+        console.log(res)
+        this.counter++
     }
 }

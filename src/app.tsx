@@ -28,6 +28,8 @@ class App extends Component {
             'pages/user/user',
             'pages/types/types',
 
+            'pages/login/login',
+
             'pages/test/test',
 
         ],

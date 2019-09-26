@@ -97,12 +97,13 @@ class Index extends Component {
     }
     
     render() {
-        const { counter: { counter }, price: { price } } = this.props
+        const { counter: { counter, allCount }, price: { price } } = this.props
         return (
             <View className='index'>
                 <Button onClick={this.increment}>+</Button>
                 <Button onClick={this.decrement}>-</Button>
-                <Text>{counter}</Text>
+                <Text style={{marginRight: '20px'}}>{counter}</Text>
+                <Text>计算属性：{allCount}</Text>
 
                 <View style={{marginTop: '50px'}}>
                     账号：<Input className="email" onInput={ e => this.change(e)} ></Input>
