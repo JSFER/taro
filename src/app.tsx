@@ -69,7 +69,16 @@ class App extends Component {
       
     }
 
-    componentDidMount() { }
+    componentDidMount() {
+        Taro.login({
+            success: res => {
+                console.log(res)
+            },
+            fail: err => {
+                console.log(err)
+            }
+        })
+    }
 
     componentDidShow() { }
 

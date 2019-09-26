@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "myApp",
   "description": "生鲜电商平台",
-  "appid": "touristappid",
+  "appid": "wx24e8cc48379dd10e",
   "setting": {
     "urlCheck": true,
     "es6": false,
