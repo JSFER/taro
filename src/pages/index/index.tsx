@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Text, Button, Input } from '@tarojs/components'
+import { View, Text, Button, Input, Image } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
@@ -20,7 +20,16 @@ type propsType = {
 type stateType = {
     name: string,
     email: string,
-    password: string
+    password: string,
+    userInfo: {
+        avatarUrl: string
+        city: string
+        country: string
+        gender: number
+        language: string
+        nickName: string
+        province: string
+    }
 }
 
 interface Index {
@@ -45,7 +54,16 @@ class Index extends Component {
     state: stateType = {
         name: '朱传良',
         email: '',
-        password: ''
+        password: '',
+        userInfo: {
+            avatarUrl: '',
+            city: '',
+            country: '',
+            gender: 1,
+            language: '',
+            nickName: '',
+            province: ''
+        }
     }
 
     componentWillMount() { }
@@ -92,15 +110,31 @@ class Index extends Component {
 
     goTest = () =>{
         const { name } = this.state
-        Taro.redirectTo({
+        Taro.navigateTo({
             url: `/pages/test/test?name=${name}&age=30`
         })
     }
+    tobegin = (userInfo: any) => {
+        this.setState({
+            userInfo: userInfo.detail.userInfo
+        })
+    };
     
     render() {
         const { counter: { counter, allCount }, price: { price } } = this.props
+        const { userInfo: { avatarUrl, nickName } } = this.state
+
         return (
             <View className='index'>
+                { avatarUrl? (
+                    <View >
+                        <Image className="header" src={avatarUrl}></Image>
+                        <View className="name">{nickName}</View>
+                    </View>
+                ): null}
+                <Button className="btn" openType="getUserInfo" onGetUserInfo={this.tobegin} type="primary">
+                    开启缘分
+                </Button>
                 <Button onClick={this.increment}>+</Button>
                 <Button onClick={this.decrement}>-</Button>
                 <Text style={{marginRight: '20px'}}>{counter}</Text>

@@ -29,9 +29,7 @@ class App extends Component {
             'pages/types/types',
 
             'pages/login/login',
-
             'pages/test/test',
-
         ],
         window: {
             backgroundTextStyle: 'light',
