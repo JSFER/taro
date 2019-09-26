@@ -4,18 +4,12 @@ import { View, Text, Button, Input, Image, Swiper, SwiperItem } from '@tarojs/co
 import { observer, inject } from '@tarojs/mobx'
 import './index.scss'
 
+import { CounterType } from '../../store/counter/counter'
+import { priceType } from '../../store/price/price'
+
 type propsType = {
-    price: {
-        price: number,
-        setPrice: Function
-    },
-    counter: {
-        counter: number,
-        allCount: number,
-        increment: Function,
-        decrement: Function,
-        incrementAsync: Function
-    }
+    price: priceType,
+    counter: CounterType
 }
 type stateType = {
     name: string,
@@ -99,7 +93,7 @@ class Index extends Component {
     
     render() {
         const { counter: { counter, allCount }, price: { price } } = this.props
-
+        
         return (
             <View className='index'>
                 <Swiper
