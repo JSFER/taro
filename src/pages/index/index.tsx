@@ -11,6 +11,7 @@ type propsType = {
     },
     counter: {
         counter: number,
+        allCount: number,
         increment: Function,
         decrement: Function,
         incrementAsync: Function
