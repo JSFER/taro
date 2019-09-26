@@ -1,8 +1,26 @@
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, Image, Button } from '@tarojs/components'
+import { observer } from '@tarojs/mobx'
 import './user.scss'
 
-export default class User extends Component {
+type stateType = {
+    userInfo: {
+        avatarUrl: string
+        city: string
+        country: string
+        gender: number
+        language: string
+        nickName: string
+        province: string
+    }
+}
+
+interface User {
+    state: stateType
+}
+
+@observer
+class User extends Component {
 
     /**
      * 指定config的类型声明为: Taro.Config
@@ -15,6 +33,17 @@ export default class User extends Component {
         navigationBarTitleText: '我的首页'
     }
 
+    state: stateType = {
+        userInfo: {
+            avatarUrl: '',
+            city: '',
+            country: '',
+            gender: 1,
+            language: '',
+            nickName: '',
+            province: ''
+        }
+    }
 
     componentWillMount() { }
 
@@ -26,11 +55,32 @@ export default class User extends Component {
 
     componentDidHide() { }
 
+    tobegin = (userInfo: any) => {
+        this.setState({
+            userInfo: userInfo.detail.userInfo
+        })
+    };
+
     render() {
+        const { userInfo: { avatarUrl, nickName, gender, city } } = this.state
+
         return (
             <View className='user'>
+                { avatarUrl? (
+                    <View >
+                        <Image className="header" src={avatarUrl}></Image>
+                        <View className="name">姓名：{nickName}</View>
+                        <View className="sex">性别：{gender == 1?'男':'女'}</View>
+                        <View className="city">城市：{city}</View>
+                    </View>
+                ): null}
+                <Button className="btn" openType="getUserInfo" onGetUserInfo={this.tobegin} type="primary">
+                    开启缘分
+                </Button>
                 我的页面
             </View>
         )
     }
 }
+
+export default User
