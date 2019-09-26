@@ -1,12 +1,11 @@
-import Taro from "@tarojs/taro"
+import Taro, { Chain } from "@tarojs/taro"
 import { pageToLogin } from "./utils"
 import { HTTP_STATUS } from './config'
 
-const customInterceptor = (chain:any) => {
-
+const customInterceptor = (chain: Chain) => {
     const requestParams = chain.requestParams
 
-    return chain.proceed(requestParams).then((res:any) => {
+    return chain.proceed(requestParams).then((res: any) => {
         // 只要请求成功，不管返回什么状态码，都走这个回调
         if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
             return Promise.reject("请求资源不存在")
