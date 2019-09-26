@@ -17,7 +17,7 @@ export default class Counter {
     @action.bound decrement() {
         this.counter--
     }
-    @action.bound async incrementAsync(params: {email: string, password:string }) {
+    @action.bound async incrementAsync(params: { email: string, password:string }) {
         const res:any = await getResultData_servers(params)
         console.log(res)
         this.counter++
