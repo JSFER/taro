@@ -79,6 +79,7 @@ class Index extends Component {
         })
     }
     change2(e: any) {
+        console.log(e)
         this.setState({
             password: e.detail.value
         })
