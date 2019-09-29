@@ -5,13 +5,13 @@ import interceptors from './interceptors'
 interceptors.forEach(interceptorItem => Taro.addInterceptor(interceptorItem))
 
 interface Params {
-    url: string,
-    data: object,
+    url: string;
+    data: object;
     contentType?: string
 }
 
 class httpRequest {
-    baseOptions(params: Params, method:any = "GET") {
+    baseOptions(params: Params, method:any = "GET"):Promise<any> {
         let { url, data } = params;
         const BASE_URL = getBaseUrl(url);
         let contentType = "application/json";
@@ -28,22 +28,22 @@ class httpRequest {
         return Taro.request(option);
     }
 
-    get(url:string, data:object = {}) {
+    get(url:string, data:object = {}):Promise<any> {
         let option = { url, data };
         return this.baseOptions(option);
     }
 
-    post(url:string, data:object, contentType?:string) {
+    post(url:string, data:object, contentType?:string):Promise<any> {
         let params = { url, data, contentType };
         return this.baseOptions(params, "POST");
     }
 
-    put(url:string, data:object = {}) {
+    put(url:string, data:object = {}):Promise<any> {
         let option = { url, data };
         return this.baseOptions(option, "PUT");
     }
 
-    delete(url:string, data:object = {}) {
+    delete(url:string, data:object = {}):Promise<any> {
         let option = { url, data };
         return this.baseOptions(option, "DELETE");
     }

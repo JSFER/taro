@@ -55,7 +55,7 @@ class User extends Component {
 
     componentDidHide() { }
 
-    tobegin = (userInfo: any) => {
+    tobegin = (userInfo: any):void => {
         this.setState({
             userInfo: userInfo.detail.userInfo
         })

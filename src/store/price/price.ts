@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 
 
 export interface priceType {
-    price: number,
+    price: number;
     setPrice: Function
 }
 

@@ -8,18 +8,18 @@ import { CounterType } from '../../store/counter/counter'
 import { priceType } from '../../store/price/price'
 
 type propsType = {
-    price: priceType,
-    counter: CounterType
+    price: priceType;
+    counter: CounterType;
 }
 type stateType = {
-    name: string,
-    email: string,
-    password: string
+    name: string;
+    email: string;
+    password: string;
 }
 
 interface Index {
-    props: propsType,
-    state: stateType
+    props: propsType;
+    state: stateType;
 }
 
 @inject('price', 'counter')

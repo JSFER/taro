@@ -3,10 +3,10 @@ import { View, Video, Image } from '@tarojs/components'
 import './test.scss'
 
 export interface State{
-    name: string,
-    age: string,
-    src: string,
-    imgSrc: string
+    name: string;
+    age: string;
+    src: string;
+    imgSrc: string;
 }
 
 export default class Test extends Component {
