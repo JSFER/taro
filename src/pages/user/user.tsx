@@ -3,6 +3,11 @@ import { View, Image, Button } from '@tarojs/components'
 import { observer } from '@tarojs/mobx'
 import './user.scss'
 
+enum Gender {
+    '男' = 1,
+    '女' = 2
+}
+
 type stateType = {
     userInfo: {
         avatarUrl: string
@@ -70,7 +75,7 @@ class User extends Component {
                     <View >
                         <Image className="header" src={avatarUrl}></Image>
                         <View className="name">姓名：{nickName}</View>
-                        <View className="sex">性别：{gender == 1?'男':'女'}</View>
+                        <View className="sex">性别：{Gender[gender]}</View>
                         <View className="city">城市：{city}</View>
                     </View>
                 ): null}
