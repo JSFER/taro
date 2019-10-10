@@ -1,10 +1,10 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { Provider } from '@tarojs/mobx'
+import { Provider } from "@tarojs/mobx"
+import Taro, { Component, Config } from "@tarojs/taro"
 
-import Index from './pages/index'
+import Index from "./pages/index"
 
-import './app.scss'
-import * as store from './store'
+import "./app.scss"
+import * as store from "./store"
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -13,7 +13,6 @@ import * as store from './store'
 // }
 
 class App extends Component {
-
     /**
      * 指定config的类型声明为: Taro.Config
      *
@@ -23,48 +22,52 @@ class App extends Component {
      */
     config: Config = {
         pages: [
-            'pages/index/index',
-            'pages/car/car',
-            'pages/user/user',
-            'pages/types/types',
+            "pages/index/index",
+            "pages/car/car",
+            "pages/user/user",
+            "pages/types/types",
 
-            'pages/login/login',
-            'pages/test/test',
+            "pages/login/login",
+            "pages/test/test"
         ],
         window: {
-            backgroundTextStyle: 'light',
-            navigationBarBackgroundColor: '#fff',
-            navigationBarTitleText: 'WeChat',
-            navigationBarTextStyle: 'black'
+            backgroundTextStyle: "light",
+            navigationBarBackgroundColor: "#fff",
+            navigationBarTitleText: "WeChat",
+            navigationBarTextStyle: "black"
         },
         tabBar: {
-            list: [{
-                pagePath: "pages/index/index",
-                iconPath: "images/tabBar/tarbar1-1.png",
-                selectedIconPath: "images/tabBar/tarbar2-1.png",
-                text: "首页"
-            }, {
-                pagePath: "pages/types/types",
-                iconPath: "images/tabBar/tarbar1-2.png",
-                selectedIconPath: "images/tabBar/tarbar2-2.png",
-                text: "分类"
-            }, {
-                pagePath: "pages/car/car",
-                iconPath: "images/tabBar/tarbar1-3.png",
-                selectedIconPath: "images/tabBar/tarbar2-3.png",
-                text: "购物车"
-            }, {
-                pagePath: "pages/user/user",
-                iconPath: "images/tabBar/tarbar1-4.png",
-                selectedIconPath: "images/tabBar/tarbar2-4.png",
-                text: "我的"
-            }],
-            color: '#333',
-            selectedColor: '#333',
-            backgroundColor: '#fff',
-            borderStyle: 'black'
+            list: [
+                {
+                    pagePath: "pages/index/index",
+                    iconPath: "images/tabBar/tarbar1-1.png",
+                    selectedIconPath: "images/tabBar/tarbar2-1.png",
+                    text: "首页"
+                },
+                {
+                    pagePath: "pages/types/types",
+                    iconPath: "images/tabBar/tarbar1-2.png",
+                    selectedIconPath: "images/tabBar/tarbar2-2.png",
+                    text: "分类"
+                },
+                {
+                    pagePath: "pages/car/car",
+                    iconPath: "images/tabBar/tarbar1-3.png",
+                    selectedIconPath: "images/tabBar/tarbar2-3.png",
+                    text: "购物车"
+                },
+                {
+                    pagePath: "pages/user/user",
+                    iconPath: "images/tabBar/tarbar1-4.png",
+                    selectedIconPath: "images/tabBar/tarbar2-4.png",
+                    text: "我的"
+                }
+            ],
+            color: "#333",
+            selectedColor: "#333",
+            backgroundColor: "#fff",
+            borderStyle: "black"
         }
-
     }
 
     componentDidMount() {
@@ -78,11 +81,11 @@ class App extends Component {
         })
     }
 
-    componentDidShow() { }
+    componentDidShow() {}
 
-    componentDidHide() { }
+    componentDidHide() {}
 
-    componentDidCatchError() { }
+    componentDidCatchError() {}
 
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
@@ -95,4 +98,4 @@ class App extends Component {
     }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById("app"))
