@@ -1,11 +1,11 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Image, Button } from '@tarojs/components'
-import { observer } from '@tarojs/mobx'
-import './user.scss'
+import { Button, Image, View } from "@tarojs/components"
+import { observer } from "@tarojs/mobx"
+import Taro, { Component, Config } from "@tarojs/taro"
+import "./user.scss"
 
 enum Gender {
-    '男' = 1,
-    '女' = 2
+    "男" = 1,
+    "女" = 2
 }
 
 type stateType = {
@@ -26,7 +26,6 @@ interface User {
 
 @observer
 class User extends Component {
-
     /**
      * 指定config的类型声明为: Taro.Config
      *
@@ -35,51 +34,58 @@ class User extends Component {
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
     config: Config = {
-        navigationBarTitleText: '我的首页'
+        navigationBarTitleText: "我的首页"
     }
 
     state: stateType = {
         userInfo: {
-            avatarUrl: '',
-            city: '',
-            country: '',
+            avatarUrl: "",
+            city: "",
+            country: "",
             gender: 1,
-            language: '',
-            nickName: '',
-            province: ''
+            language: "",
+            nickName: "",
+            province: ""
         }
     }
 
-    componentWillMount() { }
+    componentWillMount() {}
 
-    componentDidMount() { }
+    componentDidMount() {}
 
-    componentWillUnmount() { }
+    componentWillUnmount() {}
 
-    componentDidShow() { }
+    componentDidShow() {}
 
-    componentDidHide() { }
+    componentDidHide() {}
 
-    tobegin = (userInfo: any):void => {
+    tobegin = (userInfo: any): void => {
         this.setState({
             userInfo: userInfo.detail.userInfo
         })
-    };
+    }
 
     render() {
-        const { userInfo: { avatarUrl, nickName, gender, city } } = this.state
+        const {
+            userInfo: { avatarUrl, nickName, gender, city }
+        } = this.state
 
         return (
-            <View className='user'>
-                { avatarUrl? (
-                    <View >
+            <View className="user">
+                {avatarUrl ? (
+                    <View>
                         <Image className="header" src={avatarUrl}></Image>
                         <View className="name">姓名：{nickName}</View>
                         <View className="sex">性别：{Gender[gender]}</View>
                         <View className="city">城市：{city}</View>
                     </View>
-                ): null}
-                <Button className="btn" openType="getUserInfo" onGetUserInfo={this.tobegin} type="primary">
+                ) : null}
+                <Button
+                    className="btn"
+                    openType="getUserInfo"
+                    onGetUserInfo={this.tobegin}
+                    type="primary"
+                >
                     开启缘分
                 </Button>
                 我的页面

@@ -1,9 +1,8 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import './login.scss'
+import { View } from "@tarojs/components"
+import Taro, { Component, Config } from "@tarojs/taro"
+import "./login.scss"
 
 export default class Login extends Component {
-
     /**
      * 指定config的类型声明为: Taro.Config
      *
@@ -12,25 +11,20 @@ export default class Login extends Component {
      * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
      */
     config: Config = {
-        navigationBarTitleText: '登陆'
+        navigationBarTitleText: "登陆"
     }
 
+    componentWillMount() {}
 
-    componentWillMount() { }
+    componentDidMount() {}
 
-    componentDidMount() { }
+    componentWillUnmount() {}
 
-    componentWillUnmount() { }
+    componentDidShow() {}
 
-    componentDidShow() { }
-
-    componentDidHide() { }
+    componentDidHide() {}
 
     render() {
-        return (
-            <View className='login'>
-                登陆
-            </View>
-        )
+        return <View className="login">登陆</View>
     }
 }
