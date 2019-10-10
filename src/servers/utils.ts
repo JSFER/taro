@@ -1,4 +1,4 @@
-import Taro from "@tarojs/taro";
+import Taro from "@tarojs/taro"
 /**
  * @description 获取当前页url
  */
@@ -11,9 +11,9 @@ export const getCurrentPageUrl = () => {
 
 export const pageToLogin = () => {
     let path = getCurrentPageUrl()
-    if (!path.includes('login')) {
+    if (!path.includes("login")) {
         Taro.navigateTo({
             url: "/pages/login/login"
-        });
+        })
     }
 }

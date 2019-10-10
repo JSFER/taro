@@ -53,7 +53,7 @@ class App extends Component {
                 iconPath: "images/tabBar/tarbar1-3.png",
                 selectedIconPath: "images/tabBar/tarbar2-3.png",
                 text: "购物车"
-            },{
+            }, {
                 pagePath: "pages/user/user",
                 iconPath: "images/tabBar/tarbar1-4.png",
                 selectedIconPath: "images/tabBar/tarbar2-4.png",
@@ -64,7 +64,7 @@ class App extends Component {
             backgroundColor: '#fff',
             borderStyle: 'black'
         }
-      
+
     }
 
     componentDidMount() {
