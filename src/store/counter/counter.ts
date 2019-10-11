@@ -1,18 +1,11 @@
 import { action, computed, observable } from "mobx"
 import { getResultData_servers } from "../../servers/servers"
 
-interface Response {
-    code?: string
-    message?: string
-}
-
-export interface userInfo extends Response {
-    data?: {
-        token: string
-        user: {
-            email: string
-            name: string
-        }
+export interface Response {
+    code: string
+    message: string
+    data: {
+        [key: string]: any
     }
 }
 
@@ -26,7 +19,7 @@ export interface CounterType {
 
 export default class Counter {
     @observable counter: number = 0
-    @observable userInfo: userInfo = {}
+    @observable userInfo: Response | undefined
 
     @computed get allCount(): number {
         return this.counter + 10
@@ -47,7 +40,7 @@ export default class Counter {
     }) {
         const res = await getResultData_servers(params)
         console.log(res)
-        this.userInfo = res
+        this.userInfo = res.data
         // this.counter++
     }
 }
