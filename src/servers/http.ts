@@ -6,20 +6,30 @@ interceptors.forEach(interceptorItem => Taro.addInterceptor(interceptorItem))
 
 interface Params {
     url: string
-    data?: object
+    data: object
     contentType?: string
 }
 
+interface Options {
+    url: string
+    data: object
+    method: any
+    header: {
+        "content-type": string
+        Authorization: any
+    }
+}
+
 class httpRequest {
-    baseOptions(params: Params, method: any = "GET") {
+    baseOptions(params: Params, method: string) {
         let { url, data } = params
         const BASE_URL = getBaseUrl(url)
         let contentType = "application/json"
         contentType = params.contentType || contentType
-        const option = {
+        const option: Options = {
             url: BASE_URL + url,
-            data: data,
-            method: method,
+            data,
+            method,
             header: {
                 "content-type": contentType,
                 Authorization: Taro.getStorageSync("Authorization")
@@ -29,22 +39,22 @@ class httpRequest {
     }
 
     get(url: string, data: object = {}) {
-        let option = { url, data }
-        return this.baseOptions(option)
+        let option: Params = { url, data }
+        return this.baseOptions(option, "GET")
     }
 
     post(url: string, data: object, contentType?: string) {
-        let params = { url, data, contentType }
+        let params: Params = { url, data, contentType }
         return this.baseOptions(params, "POST")
     }
 
     put(url: string, data: object = {}) {
-        let option = { url, data }
+        let option: Params = { url, data }
         return this.baseOptions(option, "PUT")
     }
 
     delete(url: string, data: object = {}) {
-        let option = { url, data }
+        let option: Params = { url, data }
         return this.baseOptions(option, "DELETE")
     }
 }
